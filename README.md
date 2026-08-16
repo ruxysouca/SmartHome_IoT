@@ -1,12 +1,11 @@
-# \# SmartHome\_IoT
+#  SmartHome_IoT
 
 
 
-\## Project Goal
+## Project Goal
 
 
 
 
 
-\## Project Structure
-
+## Project Structure
