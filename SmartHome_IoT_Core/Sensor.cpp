@@ -40,3 +40,25 @@ Sensor::~Sensor()
 {
 	delete[] unit;
 }
+
+void Sensor::updateReading(float newValue)
+{
+	lastReading = newValue;
+}
+
+float Sensor::readValue() const
+{
+	return lastReading;
+}
+
+bool Sensor::isThresholdExceeded() const
+{
+	return lastReading > threshold;
+}
+
+void Sensor::runDiagnostics()
+{
+	std::cout << "    DIAGNOSTIC (sensor)   \nName: " << deviceName << "\nID: " << deviceID
+		<< "\nLast reading: " << lastReading << " " << unit << "\nStatus: "
+		<< (isThresholdExceeded() ? "ALERT (Threshold exceeded)\n" : "NORMAL\n");
+}
