@@ -38,3 +38,12 @@ IoTDevice::~IoTDevice()
 	delete[] deviceName;
 	totalDevices--;
 }
+
+std::ostream& operator<<(std::ostream& out, const IoTDevice& device)
+{
+	out << "ID: " << device.deviceID
+		<< "\nName: " << device.deviceName
+		<< "\nStatus: " << (device.status == OFFLINE ? "OFFLINE" : (device.status == ONLINE ? "ONLINE" : "ERROR"));
+
+	return out;
+}
