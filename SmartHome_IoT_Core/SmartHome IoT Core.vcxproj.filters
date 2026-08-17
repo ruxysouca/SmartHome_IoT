@@ -18,5 +18,13 @@
     <ClCompile Include="SmartHome IoT Core.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IoTDevice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="IoTDevice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
