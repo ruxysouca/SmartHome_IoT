@@ -12,7 +12,11 @@ SmartHome_IoT/
 ├── LICENSE
 ├── README.md
 └── SmartHome_IoT_Core/
-    ├── IoTDevice.h
+    ├── Actuator.cpp
+    ├── Actuator.h
     ├── IoTDevice.cpp
+    ├── IoTDevice.h
+    ├── Sensor.cpp
+    ├── Sensor.h
     └── main.cpp
 ```
