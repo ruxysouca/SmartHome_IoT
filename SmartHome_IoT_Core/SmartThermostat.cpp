@@ -22,3 +22,30 @@ SmartThermostat& SmartThermostat::operator=(const SmartThermostat& other)
 }
 
 SmartThermostat::~SmartThermostat() {}
+
+void SmartThermostat::setTargetTemperature(float newTarget)
+{
+	targetTemperature = newTarget;
+}
+
+float SmartThermostat::getTargetTemperature() const
+{
+	return targetTemperature;
+}
+
+void SmartThermostat::evaluateState()
+{
+	if (lastReading < targetTemperature)
+		state = true;
+	else
+		state = false;
+}
+
+void SmartThermostat::runDiagnostics()
+{
+	std::cout << "    DIAGNOSTIC (smart thermostat)\nName: " << deviceName << "\nID: "
+		<< deviceID << "\nCurrent reading: " << lastReading << " " << unit << "\nTarget temperature: "
+		<< targetTemperature << "\nActuator type: " << actionType << "\nHeating status: "
+		<< (state ? "ACTIVE (heating on)\n" : "INACTIVE (heating off)\n")
+		<< "Safety threshold alert: " << (isThresholdExceeded() ? "YES\n" : "NO\n");
+}
