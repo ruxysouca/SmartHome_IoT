@@ -427,3 +427,17 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Visual Studio project and solution files
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# Visual Studio build and cache directories
+.vs/
+Debug/
+Release/
+x64/
+x86/
+out/
