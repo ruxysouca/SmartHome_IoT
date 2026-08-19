@@ -101,12 +101,40 @@ int main()
 	Actuator livingRoomHeater("Living room valve", 201, "Thermal valve", false);
 	SmartThermostat mainThermostat("Main thermostat", 301, "Celsius", "Heating relay", 19.0f, 35.0f, false, 22.5f);
 
-	std::cout << "\n3.TESTING SMARTHUB (DYNAMIC ARRAY & RESIZE)\n";
+	std::cout << "\n3. TESTING SMARTHUB (DYNAMIC ARRAY & RESIZE)\n";
 	SmartHub hub(2);
-	hub.addDevice(& bedroomSensor);
+	hub.addDevice(&bedroomSensor);
 	hub.addDevice(&livingRoomHeater);
 	hub.addDevice(&mainThermostat);
 
 	hub.runAllDiagnostics();
+
+	std::cout << "\n\n4. TESTING EXCEPTION: DEVICE LOOKUP:\n";
+	//Successful lookup
+	try
+	{
+		std::cout << "Searching for device ID 201:\n";
+		IoTDevice* foundDevice = hub.getDeviceById(201);
+		std::cout << "Found device: " << *foundDevice << '\n';
+	}
+	catch (const std::exception& ex)
+	{
+		std::cout << "Caught exception: " << ex.what() << "\n\n";
+	}
+
+	//Failed lookup
+	try
+	{
+		std::cout << "Searching for device ID 404:\n";
+		IoTDevice* notFoundDevice = hub.getDeviceById(404);
+		std::cout << "Found device: " << *notFoundDevice << '\n';
+	}
+	catch (const std::exception& ex)
+	{
+		std::cout << "Caught exception: " << ex.what() << "\n\n";
+	}
+
+
+
 	return 0;
 }
