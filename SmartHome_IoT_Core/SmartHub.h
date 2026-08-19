@@ -26,5 +26,9 @@ public:
 
 	int getDeviceCount() const;
 
+	IoTDevice*& operator[](int index);
+
+	const IoTDevice* operator[](int index)const;
+
 	~SmartHub();
 };

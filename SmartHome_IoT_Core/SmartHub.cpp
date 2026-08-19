@@ -84,3 +84,19 @@ int SmartHub::getDeviceCount() const
 {
 	return count;
 }
+
+IoTDevice*& SmartHub::operator[](int index)
+{
+	if (index < 0 || index >= count)
+		throw std::out_of_range("Index out of range in SmartHub!");
+
+	return devices[index];
+}
+
+const IoTDevice* SmartHub::operator[](int index) const
+{
+	if (index < 0 || index >= count)
+		throw std::out_of_range("Index out of range in SmartHub!");
+
+	return devices[index];
+}
