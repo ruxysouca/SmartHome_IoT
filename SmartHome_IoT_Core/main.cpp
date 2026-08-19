@@ -96,7 +96,17 @@ int main()
 		std::cout << "Caught exception: " << ex.what() << "\n\n";
 	}
 
-	
+	std::cout << "\n2. INITIALIZING DEVICES\n";
+	Sensor bedroomSensor("Bedroom sensor", 101, "Celsius", 21.5f, 30.0f);
+	Actuator livingRoomHeater("Living room valve", 201, "Thermal valve", false);
+	SmartThermostat mainThermostat("Main thermostat", 301, "Celsius", "Heating relay", 19.0f, 35.0f, false, 22.5f);
 
+	std::cout << "\n3.TESTING SMARTHUB (DYNAMIC ARRAY & RESIZE)\n";
+	SmartHub hub(2);
+	hub.addDevice(& bedroomSensor);
+	hub.addDevice(&livingRoomHeater);
+	hub.addDevice(&mainThermostat);
+
+	hub.runAllDiagnostics();
 	return 0;
 }
