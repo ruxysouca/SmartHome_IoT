@@ -101,7 +101,7 @@ int main()
 	Actuator livingRoomHeater("Living room valve", 201, "Thermal valve", false);
 	SmartThermostat mainThermostat("Main thermostat", 301, "Celsius", "Heating relay", 19.0f, 35.0f, false, 22.5f);
 
-	std::cout << "\n3. TESTING SMARTHUB (DYNAMIC ARRAY & RESIZE)\n";
+	std::cout << "\n\n3. TESTING SMARTHUB (DYNAMIC ARRAY & RESIZE) ...\n";
 	SmartHub hub(2);
 	hub.addDevice(&bedroomSensor);
 	hub.addDevice(&livingRoomHeater);
@@ -119,7 +119,7 @@ int main()
 	}
 	catch (const std::exception& ex)
 	{
-		std::cout << "Caught exception: " << ex.what() << "\n\n";
+		std::cout << "Caught exception! " << ex.what() << "\n\n";
 	}
 
 	//Failed lookup
@@ -131,7 +131,7 @@ int main()
 	}
 	catch (const std::exception& ex)
 	{
-		std::cout << "Caught exception: " << ex.what() << "\n\n";
+		std::cout << "Caught exception! " << ex.what() << "\n\n";
 	}
 
 	std::cout << "\n5. TESTING SMARTHUB RULE OF THREE \nTesting SmartHub copy constructor:\n";
