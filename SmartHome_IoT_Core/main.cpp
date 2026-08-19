@@ -1,6 +1,7 @@
 #include "Actuator.h"
 #include "Sensor.h"
 #include "SmartThermostat.h"
+#include "Exceptions.h"
 
 int main()
 {
@@ -41,6 +42,7 @@ int main()
 		devices[i]->runDiagnostics();
 	}*/
 
+/*
 	std::cout << "      TESTING SMART THERMOSTAT\n";
 	SmartThermostat livingRoomThermostat("Living room thermostat", 301, "Celsius", "Heating relay", 19.5f, 35.0f, false, 22.0f);
 
@@ -69,6 +71,18 @@ int main()
 	std::cout << "Streaming via operator<<:\n" << *device;
 	std::cout << "\n\nInvoking virtual runDiagnostics():\n";
 	device->runDiagnostics();
+	*/
+
+
+	try
+	{
+		std::cout << "Attempting to create sensor with invalid threshold (-10.0):\n";
+		Sensor faultySensor("Faulty sensor", 999, "Celsius", 20.0f, -10.0f);
+	}
+	catch (const InvalidThresholdException& ex)
+	{
+		std::cout << ex.what() << "\n";
+	}
 
 	return 0;
 }
