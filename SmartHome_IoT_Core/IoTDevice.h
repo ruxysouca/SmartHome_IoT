@@ -31,6 +31,14 @@ public:
 
 	virtual void runDiagnostics() = 0;
 
+	bool operator==(const IoTDevice& other) const;
+
+	bool operator!=(const IoTDevice& other) const;
+
+	bool operator<(const IoTDevice& other) const;
+
+	bool operator>(const IoTDevice& other) const;
+
 	friend std::ostream& operator<<(std::ostream& out, const IoTDevice& device);
 
 	virtual ~IoTDevice();

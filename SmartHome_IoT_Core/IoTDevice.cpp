@@ -57,3 +57,23 @@ int IoTDevice::getTotalDevices()
 {
 	return totalDevices;
 }
+
+bool IoTDevice::operator==(const IoTDevice& other) const
+{
+	return this->deviceID == other.deviceID;
+}
+
+bool IoTDevice::operator!=(const IoTDevice& other) const
+{
+	return !(*this == other);
+}
+
+bool IoTDevice::operator<(const IoTDevice& other) const
+{
+	return this->deviceID < other.deviceID;
+}
+
+bool IoTDevice::operator>(const IoTDevice& other) const
+{
+	return this->deviceID > other.deviceID;
+}
