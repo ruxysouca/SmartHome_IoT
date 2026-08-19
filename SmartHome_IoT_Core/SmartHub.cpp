@@ -36,3 +36,51 @@ SmartHub::~SmartHub()
 {
 	delete[] devices;
 }
+
+void SmartHub::resize()
+{
+	capacity *= 2;
+
+	IoTDevice** newDevices = new IoTDevice * [capacity];
+	for (int i = 0; i < count; i++)
+		newDevices[i] = devices[i];
+
+	delete[] devices;
+	devices = newDevices;
+}
+
+void SmartHub::addDevice(IoTDevice* device)
+{
+	if (count == capacity)
+		resize();
+
+	devices[count++] = device;
+}
+
+IoTDevice* SmartHub::getDeviceById(int id) const
+{
+	for (int i = 0; i < count; i++)
+		if (devices[i]->getDeviceID() == id)
+			return devices[i];
+
+	throw DeviceNotFoundException(id);
+}
+
+void SmartHub::runAllDiagnostics() const
+{
+	std::cout << "-------------------------------------\nSMART HUB DIAGNOSTICS\n"
+		<< "Connected devices count: " << count << '\n';
+
+	for (int i = 0; i < count; i++)
+	{
+		devices[i]->runDiagnostics();
+		std::cout << "\n";
+	}
+
+	std::cout << "-------------------------------------\n";
+}
+
+int SmartHub::getDeviceCount() const
+{
+	return count;
+}

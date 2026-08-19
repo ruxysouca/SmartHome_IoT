@@ -17,8 +17,6 @@ public:
 	SmartHub(const SmartHub& other);
 	
 	SmartHub& operator=(const SmartHub& other);
-	
-	~SmartHub();
 
 	void addDevice(IoTDevice* device);
 
@@ -27,4 +25,6 @@ public:
 	void runAllDiagnostics() const;
 
 	int getDeviceCount() const;
+
+	~SmartHub();
 };
