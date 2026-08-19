@@ -24,5 +24,11 @@ public:
 
 	void runDiagnostics() override;
 
+	SmartThermostat& operator++();
+	SmartThermostat operator++(int);
+
+	SmartThermostat& operator--();
+	SmartThermostat operator--(int);
+
 	virtual ~SmartThermostat();
 };

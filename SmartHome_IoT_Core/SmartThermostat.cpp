@@ -51,3 +51,34 @@ void SmartThermostat::runDiagnostics()
 		<< "Safety threshold alert: " << (isThresholdExceeded() ? "YES\n" : "NO\n")
 		<< "-------------------------------------\n";
 }
+
+SmartThermostat& SmartThermostat::operator++()
+{
+	this->targetTemperature += 0.5f;
+	this->evaluateState();
+	return *this;
+}
+
+SmartThermostat SmartThermostat::operator++(int)
+{
+	SmartThermostat temp = *this;
+	this->targetTemperature += 0.5f;
+	this->evaluateState();
+	return temp;
+
+}
+
+SmartThermostat& SmartThermostat::operator--()
+{
+	this->targetTemperature -= 0.5f;
+	this->evaluateState();
+	return *this;
+}
+
+SmartThermostat SmartThermostat::operator--(int)
+{
+	SmartThermostat temp = *this;
+	this->targetTemperature -= 0.5f;
+	this->evaluateState();
+	return temp;
+}
