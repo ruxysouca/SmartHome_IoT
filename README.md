@@ -19,4 +19,6 @@ SmartHome_IoT/
     ├── Sensor.cpp
     ├── Sensor.h
     └── main.cpp
+    └── SmartThermostat.cpp
+    └── SmartThermostat.h
 ```
