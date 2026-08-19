@@ -1,7 +1,11 @@
 #include "Sensor.h"
+#include "Exceptions.h"
 
 Sensor::Sensor(const char* name, int id, const char* sensorUnit, float initialReading, float maxThreshold) : IoTDevice(name, id)
 {
+	if (maxThreshold <= 0.0f)
+		throw InvalidThresholdException(maxThreshold);
+
 	unit = new char[strlen(sensorUnit) + 1];
 	strcpy(unit, sensorUnit);
 
