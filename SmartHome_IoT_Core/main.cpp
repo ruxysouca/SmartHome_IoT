@@ -1,9 +1,10 @@
 #include "Actuator.h"
 #include "Sensor.h"
+#include "SmartThermostat.h"
 
 int main()
 {
-	std::cout << "TESTING SENSOR\n";
+/*	std::cout << "      TESTING SENSOR\n";
 	Sensor tempSensor("Bedroom Temp", 101, "Celsius", 21.5, 25.0f);
 	tempSensor.runDiagnostics();
 
@@ -15,8 +16,8 @@ int main()
 	Sensor copiedSensor = tempSensor;
 	copiedSensor.runDiagnostics();
 
-	std::cout << "\n\nTESTING ACTUATOR\n";
-	Actuator heater("Central heating valve", 201, "Thermal Relay", false);
+	std::cout << "\n\n      TESTING ACTUATOR\n";
+	Actuator heater("Central heating valve", 201, "Thermal relay", false);
 	heater.runDiagnostics();
 
 	std::cout << "\nToggling actuator state: \n";
@@ -28,7 +29,7 @@ int main()
 	assignedHeater = heater;
 	assignedHeater.runDiagnostics();
 
-	std::cout << "\n\nTESTING POLYMORPHISM";
+	std::cout << "\n\n      TESTING POLYMORPHISM";
 	IoTDevice* devices[2];
 	devices[0] = &tempSensor;
 	devices[1] = &heater;
@@ -38,7 +39,36 @@ int main()
 		std::cout << "\nDevice " << i + 1 << " details:\n";
 		std::cout << *devices[i] << '\n';
 		devices[i]->runDiagnostics();
-	}
+	}*/
+
+	std::cout << "      TESTING SMART THERMOSTAT\n";
+	SmartThermostat livingRoomThermostat("Living room thermostat", 301, "Celsius", "Heating relay", 19.5f, 35.0f, false, 22.0f);
+
+	std::cout << "Initial state:\n";
+	livingRoomThermostat.runDiagnostics();
+
+	std::cout << "\n\nEvaluating state (temperature is below target):\n";
+	livingRoomThermostat.evaluateState();
+	livingRoomThermostat.runDiagnostics();
+
+	std::cout << "\n\nUpdating temperature to 38.0 celsius (safety alert):\n";
+	livingRoomThermostat.updateReading(38.0f);
+	livingRoomThermostat.runDiagnostics();
+
+	std::cout << "\n\nTesting deep copy:\n";
+	SmartThermostat copiedThermostat = livingRoomThermostat;
+	copiedThermostat.runDiagnostics();
+
+	std::cout << "\n\nTesting assignment operator:\n";
+	SmartThermostat assignedThermostat("Dummy thermostat", 999, "Celsius", "None");
+	assignedThermostat = livingRoomThermostat;
+	assignedThermostat.runDiagnostics();
+
+	std::cout << "\n\n\n      TESTING POLYMORPHISM\n";
+	IoTDevice* device = &livingRoomThermostat;
+	std::cout << "Streaming via operator<<:\n" << *device;
+	std::cout << "\n\nInvoking virtual runDiagnostics():\n";
+	device->runDiagnostics();
 
 	return 0;
 }
