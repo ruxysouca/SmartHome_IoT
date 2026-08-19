@@ -43,9 +43,11 @@ void SmartThermostat::evaluateState()
 
 void SmartThermostat::runDiagnostics()
 {
-	std::cout << "    DIAGNOSTIC (smart thermostat)\nName: " << deviceName << "\nID: "
+	std::cout << "-------------------------------------\n"
+		<< "DIAGNOSTIC (smart thermostat)\nName: " << deviceName << "\nID: "
 		<< deviceID << "\nCurrent reading: " << lastReading << " " << unit << "\nTarget temperature: "
 		<< targetTemperature << "\nActuator type: " << actionType << "\nHeating status: "
 		<< (state ? "ACTIVE (heating on)\n" : "INACTIVE (heating off)\n")
-		<< "Safety threshold alert: " << (isThresholdExceeded() ? "YES\n" : "NO\n");
+		<< "Safety threshold alert: " << (isThresholdExceeded() ? "YES\n" : "NO\n")
+		<< "-------------------------------------\n";
 }

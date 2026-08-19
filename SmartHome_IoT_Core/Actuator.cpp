@@ -49,7 +49,9 @@ bool Actuator::getState() const
 
 void Actuator::runDiagnostics()
 {
-	std::cout << "    DIAGNOSTIC (actuator)   \nName: " << deviceName << "\nID: " << deviceID
+	std::cout << "-------------------------------------\n"
+		<< "DIAGNOSTIC(actuator)\nName: " << deviceName << "\nID : " << deviceID
 		<< "\nAction Type: " << actionType << "\nState: "
-		<< (state ? "ON\n" : "OFF\n");
+		<< (state ? "ON\n" : "OFF\n")
+		<< "-------------------------------------\n";
 }

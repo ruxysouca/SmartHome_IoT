@@ -58,7 +58,9 @@ bool Sensor::isThresholdExceeded() const
 
 void Sensor::runDiagnostics()
 {
-	std::cout << "    DIAGNOSTIC (sensor)   \nName: " << deviceName << "\nID: " << deviceID
+	std::cout << "-------------------------------------\n"
+		<< "DIAGNOSTIC (sensor)\nName: " << deviceName << "\nID: " << deviceID
 		<< "\nLast reading: " << lastReading << " " << unit << "\nStatus: "
-		<< (isThresholdExceeded() ? "ALERT (Threshold exceeded)\n" : "NORMAL\n");
+		<< (isThresholdExceeded() ? "ALERT (Threshold exceeded)\n" : "NORMAL\n")
+		<< "-------------------------------------\n";
 }
