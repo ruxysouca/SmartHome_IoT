@@ -52,3 +52,8 @@ int IoTDevice::getDeviceID() const
 {
 	return deviceID;
 }
+
+int IoTDevice::getTotalDevices()
+{
+	return totalDevices;
+}
