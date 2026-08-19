@@ -109,13 +109,13 @@ int main()
 
 	hub.runAllDiagnostics();
 
-	std::cout << "\n\n4. TESTING EXCEPTION: DEVICE LOOKUP:\n";
+	std::cout << "\n\n4. TESTING EXCEPTION: DEVICE LOOKUP\n";
 	//Successful lookup
 	try
 	{
 		std::cout << "Searching for device ID 201:\n";
 		IoTDevice* foundDevice = hub.getDeviceById(201);
-		std::cout << "Found device: " << *foundDevice << '\n';
+		std::cout << "Found device: " << *foundDevice << "\n\n";
 	}
 	catch (const std::exception& ex)
 	{
@@ -127,14 +127,21 @@ int main()
 	{
 		std::cout << "Searching for device ID 404:\n";
 		IoTDevice* notFoundDevice = hub.getDeviceById(404);
-		std::cout << "Found device: " << *notFoundDevice << '\n';
+		std::cout << "Found device: " << *notFoundDevice << "\n\n";
 	}
 	catch (const std::exception& ex)
 	{
 		std::cout << "Caught exception: " << ex.what() << "\n\n";
 	}
 
+	std::cout << "\n5. TESTING SMARTHUB RULE OF THREE \nTesting SmartHub copy constructor:\n";
+	SmartHub copiedHub = hub;
+	std::cout << "Copied hub device count: " << copiedHub.getDeviceCount();
 
+	std::cout << "\n\nTesting SmartHub assignment operator:\n";
+	SmartHub assignedHub(1);
+	assignedHub = hub;
+	std::cout << "Assigned hub device count: " << assignedHub.getDeviceCount();
 
 	return 0;
 }
