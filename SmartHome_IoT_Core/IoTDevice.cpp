@@ -47,3 +47,8 @@ std::ostream& operator<<(std::ostream& out, const IoTDevice& device)
 
 	return out;
 }
+
+int IoTDevice::getDeviceID() const
+{
+	return deviceID;
+}

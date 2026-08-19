@@ -25,6 +25,8 @@ public:
 
 	IoTDevice& operator=(const IoTDevice& other);
 
+	int getDeviceID() const;
+
 	virtual void runDiagnostics() = 0;
 
 	friend std::ostream& operator<<(std::ostream& out, const IoTDevice& device);
