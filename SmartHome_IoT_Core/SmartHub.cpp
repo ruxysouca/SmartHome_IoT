@@ -1,4 +1,5 @@
 #include "SmartHub.h"
+#include <stdexcept>
 
 SmartHub::SmartHub(int initialCapacity)
 {
