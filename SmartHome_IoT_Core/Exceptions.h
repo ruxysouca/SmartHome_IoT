@@ -10,7 +10,7 @@ private:
 public:
 	DeviceNotFoundException(int id)
 	{
-		errorMessage = "Device with ID " + std::to_string(id) + " was not found in the hub!";
+		errorMessage = "Error: device with ID " + std::to_string(id) + " was not found in the hub!";
 	}
 
 	const char* what() const noexcept override
@@ -18,3 +18,4 @@ public:
 		return errorMessage.c_str();
 	}
 };
+
