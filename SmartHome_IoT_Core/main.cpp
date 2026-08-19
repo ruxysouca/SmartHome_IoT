@@ -2,6 +2,7 @@
 #include "Sensor.h"
 #include "SmartThermostat.h"
 #include "Exceptions.h"
+#include "SmartHub.h"
 
 int main()
 {
@@ -40,9 +41,9 @@ int main()
 		std::cout << "\nDevice " << i + 1 << " details:\n";
 		std::cout << *devices[i] << '\n';
 		devices[i]->runDiagnostics();
-	}*/
+	}
 
-/*
+
 	std::cout << "      TESTING SMART THERMOSTAT\n";
 	SmartThermostat livingRoomThermostat("Living room thermostat", 301, "Celsius", "Heating relay", 19.5f, 35.0f, false, 22.0f);
 
@@ -71,8 +72,7 @@ int main()
 	std::cout << "Streaming via operator<<:\n" << *device;
 	std::cout << "\n\nInvoking virtual runDiagnostics():\n";
 	device->runDiagnostics();
-	*/
-
+	
 
 	try
 	{
@@ -83,6 +83,20 @@ int main()
 	{
 		std::cout << ex.what() << "\n";
 	}
+	*/
+
+	std::cout << "1. TESTING EXCEPTION: INVALID THRESHOLD\n";
+	try
+	{
+		std::cout << "Attempting to create sensor with invalid threshold (-5.0):\n";
+		Sensor faultySensor("Faulty sensor", 99, "Celsius", 20.0f, -5.0f);
+	}
+	catch (const std::exception& ex)
+	{
+		std::cout << "Caught exception: " << ex.what() << "\n\n";
+	}
+
+	
 
 	return 0;
 }
