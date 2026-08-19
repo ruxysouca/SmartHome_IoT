@@ -19,3 +19,19 @@ public:
 	}
 };
 
+class InvalidThresholdException : public std::exception
+{
+private:
+	std::string errorMessage;
+
+public:
+	InvalidThresholdException(float val)
+	{
+		errorMessage = "Error: invalid safety threshold " + std::to_string(val) + " (must be positive and realistic)!";
+	}
+
+	const char* what() const noexcept override
+	{
+		return errorMessage.c_str();
+	}
+};
