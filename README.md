@@ -14,6 +14,7 @@ SmartHome_IoT/
 └── SmartHome_IoT_Core/
     ├── Actuator.cpp
     ├── Actuator.h
+    ├── Exceptions.h
     ├── IoTDevice.cpp
     ├── IoTDevice.h
     ├── Sensor.cpp
