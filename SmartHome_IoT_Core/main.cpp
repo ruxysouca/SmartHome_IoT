@@ -161,5 +161,26 @@ int main()
 		std::cout << "Caught exception! " << ex.what() << '\n';
 	}
 
+	std::cout << "\n\n8. TESTING INCREMENT / DECREMENT OPERATORS ON THERMOSTAT\n"
+		<< "Initial target temperature: " << mainThermostat.getTargetTemperature() << " C\n";
+	
+	std::cout <<"\nApplying prefix ++ (++mainThermostat):\n";
+	++mainThermostat;
+	std::cout << "Traget temperature after prefix ++: " << mainThermostat.getTargetTemperature() << " C\n";
+
+	std::cout << "\nApplying postfix ++ (mainThermostat++):\n";
+	SmartThermostat previousState = mainThermostat++;
+	std::cout << "Returned previous target: " << previousState.getTargetTemperature() << " C\n"
+		<< "Current target after postfix ++: " << mainThermostat.getTargetTemperature() << " C\n";
+
+	std::cout << "\nApplying prefix -- (--mainThermostat):\n";
+	--mainThermostat;
+	std::cout << "Traget temperature after prefix --: " << mainThermostat.getTargetTemperature() << " C\n";
+
+	std::cout << "\nApplying postfix -- (mainThermostat--):\n";
+	mainThermostat--;
+	std::cout << "Traget temperature after postfix --: " << mainThermostat.getTargetTemperature() << " C\n";
+
+
 	return 0;
 }
