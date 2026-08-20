@@ -3,6 +3,8 @@
 #include "SmartThermostat.h"
 #include "Exceptions.h"
 #include "SmartHub.h"
+#include "DeviceLog.h"
+#include <string>
 
 int main()
 {
@@ -142,6 +144,22 @@ int main()
 	SmartHub assignedHub(1);
 	assignedHub = hub;
 	std::cout << "Assigned hub device count: " << assignedHub.getDeviceCount();
+
+
+	std::cout << "\n\n6. TESTING STATIC MEMBER (IoTDevice::totalDevices)\n"
+		<< "Active devices in memory: " << IoTDevice::getTotalDevices();
+
+	std::cout << "\n\n7. TESTING OPERATOR[] IN SMARTHUB\n";
+	try
+	{
+		std::cout << "Valid acces hub[0]:\n" << *hub[0] << "\n\n";
+		std::cout << "Attempting invalid access hub[99]:\n";
+		std::cout << *hub[99] << '\n';
+	}
+	catch (const std::out_of_range& ex)
+	{
+		std::cout << "Caught exception! " << ex.what() << '\n';
+	}
 
 	return 0;
 }
