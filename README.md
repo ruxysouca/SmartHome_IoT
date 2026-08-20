@@ -11,10 +11,15 @@ This is my first independent C++ project, created as a learning initiative to so
 * **Manual memory management:** Deep copying implemented with custom copy constructors, copy assignment operators, and destructors to prevent memory leaks and dangling pointers.
 * **Inheritance & diamond problem solution:** `Sensor` and `Actuator` inherit virtually from `IoTDevice` to avoid duplication inside `SmartThermostat` (multiple inheritance).
 * **Polymorphism & abstract classes:** Base class interface with pure virtual methods (`runDiagnostics()`) called dynamically with base pointers (`IoTDevice*`).
-* **Operator overloading:** Custom `operator<<` for easy console display of device details.
+* **Operator overloading:** 
+ * Custom `operator<<` for easy console display of device details.
+ * Prefix and postfix increment/decrement(`++`, `--`) for precise target adjustments.
+ * Relational operators (`==`, `!=`, `<`, `>`) for ID based device comparisons.
+ * Subscript operators (`operator[]`) with boundary checks in dynamic containers.
 * **Exception handling:** Custom exception classes (`DeviceNotFoundException` and `InvalidThresholdException`) inheriting from `std::exception` for clear error messages.
 * **Dynamic container:** A custom container (`SmartHub`) managing a dynamically resizable array of devices.
 * **Class Templates:** Generic dynamic container (`DeviceLog<T>`) used to store sensor reading history and event data across different types.
+* **Static members & methods:** Global counter tracking active `IoTDevice` instances dynamically in memory.
 
 ## Project Structure
 
