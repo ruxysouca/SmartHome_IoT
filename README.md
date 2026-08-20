@@ -14,6 +14,7 @@ This is my first independent C++ project, created as a learning initiative to so
 * **Operator overloading:** Custom `operator<<` for easy console display of device details.
 * **Exception handling:** Custom exception classes (`DeviceNotFoundException` and `InvalidThresholdException`) inheriting from `std::exception` for clear error messages.
 * **Dynamic container:** A custom container (`SmartHub`) managing a dynamically resizable array of devices.
+* **Class Templates:** Generic dynamic container (`DeviceLog<T>`) used to store sensor reading history and event data across different types.
 
 ## Project Structure
 
@@ -25,6 +26,7 @@ SmartHome_IoT/
 └── SmartHome_IoT_Core/
     ├── Actuator.cpp
     ├── Actuator.h
+    ├── DeviceLog.h
     ├── Exceptions.h
     ├── IoTDevice.cpp
     ├── IoTDevice.h
