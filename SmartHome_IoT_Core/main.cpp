@@ -191,5 +191,29 @@ int main()
 		<< "\nbedroomSensor != livingRoomHeater: " << (bedroomSensor != livingRoomHeater)
 		<< "\nbedroomSensor < livingRoomHeater: " << (bedroomSensor < livingRoomHeater)
 		<< "\nmainThermostat > livingRoomHeater: " << (mainThermostat > livingRoomHeater) << '\n';
+	
+	std::cout << "\n\n10. TESTING SENSOR READING HISTORY (DeviceLog)\n"
+		<< "Initial reading recorded in history:\n";
+	bedroomSensor.printReadingHistory();
+
+	std::cout << "Updating sensor readings (triggers dynamic resizing of log array):\n";
+	bedroomSensor.updateReading(22.1f);
+	bedroomSensor.updateReading(23.4f);
+	bedroomSensor.updateReading(23.9f);
+
+	std::cout << "Updated sensor history:\n";
+	bedroomSensor.printReadingHistory();
+
+	std::cout << "\n\n11. TESTING TEMPLATE CLASS (DeviceLog<const char*>)\n";
+	DeviceLog<const char*> eventLog(2);
+	eventLog.addEntry("System boot completed");
+	eventLog.addEntry("Threshold breach detected on ID 101");
+	eventLog.addEntry("Thermal relay engaged automatically");
+
+	eventLog.printLogs("SYSTEM EVENT LOG");
+
+	std::cout << "\nAccessing specific log entry:\n";
+	std::cout << "Event 2: " << eventLog[1] << '\n';
+	
 	return 0;
 }
