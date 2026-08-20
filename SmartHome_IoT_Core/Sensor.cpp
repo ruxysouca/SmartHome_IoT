@@ -11,9 +11,11 @@ Sensor::Sensor(const char* name, int id, const char* sensorUnit, float initialRe
 
 	lastReading = initialReading;
 	threshold = maxThreshold;
+
+	readingHistory.addEntry(initialReading);
 }
 
-Sensor::Sensor(const Sensor& other) : IoTDevice(other)
+Sensor::Sensor(const Sensor& other) : IoTDevice(other), readingHistory(other.readingHistory)
 {
 	unit = new char[strlen(other.unit) + 1];
 	strcpy(unit, other.unit);
@@ -35,6 +37,7 @@ Sensor& Sensor::operator=(const Sensor& other)
 
 	lastReading = other.lastReading;
 	threshold = other.threshold;
+	readingHistory = other.readingHistory;
 
 	return *this;
 
@@ -48,6 +51,13 @@ Sensor::~Sensor()
 void Sensor::updateReading(float newValue)
 {
 	lastReading = newValue;
+
+	readingHistory.addEntry(newValue);
+
+	if (isThresholdExceeded())
+		status = ERROR;
+	else
+		status = ONLINE;
 }
 
 float Sensor::readValue() const
@@ -60,6 +70,11 @@ bool Sensor::isThresholdExceeded() const
 	return lastReading > threshold;
 }
 
+void Sensor::printReadingHistory() const
+{
+	readingHistory.printLogs("SENSOR READING HISTORY");
+}
+
 void Sensor::runDiagnostics()
 {
 	std::cout << "-------------------------------------\n"
@@ -67,4 +82,6 @@ void Sensor::runDiagnostics()
 		<< "\nLast reading: " << lastReading << " " << unit << "\nStatus: "
 		<< (isThresholdExceeded() ? "ALERT (Threshold exceeded)\n" : "NORMAL\n")
 		<< "-------------------------------------\n";
+
+	printReadingHistory();
 }
