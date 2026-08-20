@@ -56,6 +56,44 @@ public:
 		return *this;
 	}
 
+	void addEntry(const T& entry)
+	{
+		if (count == capacity)
+			resize();
+
+		logEntries[count++] = entry;
+	}
+
+	int getCount() const
+	{
+		return count;
+	}
+
+	T& operator[](int index)
+	{
+		if (index < 0 || index >= count)
+			throw std::out_of_range("Index out of range in DeviceLog!");
+
+		return logEntries[index];
+	}
+
+	const T& operator[](int index) const
+	{
+		if (index < 0 || index >= count)
+			throw std::out_of_range("Index out of range in DeviceLog!");
+
+		return logEntries[index];
+	}
+
+	void printLogs(const char* logTitle = "DEVICE LOG ENTRIES") const
+	{
+		std::cout << "---" << logTitle << " (" << count << " entries) ---\n";
+		for (int i = 0; i < count; i++)
+			std::cout << "[" << i + 1 << "] " << logEntries[i] << '\n';
+	
+		std::cout << "-------------------------------------\n";
+	}
+
 	~DeviceLog()
 	{
 		delete[] logEntries;
