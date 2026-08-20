@@ -166,7 +166,7 @@ int main()
 	
 	std::cout <<"\nApplying prefix ++ (++mainThermostat):\n";
 	++mainThermostat;
-	std::cout << "Traget temperature after prefix ++: " << mainThermostat.getTargetTemperature() << " C\n";
+	std::cout << "Target temperature after prefix ++: " << mainThermostat.getTargetTemperature() << " C\n";
 
 	std::cout << "\nApplying postfix ++ (mainThermostat++):\n";
 	SmartThermostat previousState = mainThermostat++;
@@ -175,12 +175,21 @@ int main()
 
 	std::cout << "\nApplying prefix -- (--mainThermostat):\n";
 	--mainThermostat;
-	std::cout << "Traget temperature after prefix --: " << mainThermostat.getTargetTemperature() << " C\n";
+	std::cout << "Target temperature after prefix --: " << mainThermostat.getTargetTemperature() << " C\n";
 
 	std::cout << "\nApplying postfix -- (mainThermostat--):\n";
 	mainThermostat--;
-	std::cout << "Traget temperature after postfix --: " << mainThermostat.getTargetTemperature() << " C\n";
+	std::cout << "Target temperature after postfix --: " << mainThermostat.getTargetTemperature() << " C\n";
 
+	std::cout << "\n\n9. TESTING RELATIONAL OPERATORS (IoTDevice)\n"
+		<< "bedroom sensor ID: " << bedroomSensor.getDeviceID()
+		<< "\nliving room heater ID: " << livingRoomHeater.getDeviceID()
+		<< "\nmainThermostat ID: " << mainThermostat.getDeviceID();
 
+	std::cout << "\n\nbedroomSensor == livingRoomHeater: "
+		<< std::boolalpha << (bedroomSensor == livingRoomHeater)
+		<< "\nbedroomSensor != livingRoomHeater: " << (bedroomSensor != livingRoomHeater)
+		<< "\nbedroomSensor < livingRoomHeater: " << (bedroomSensor < livingRoomHeater)
+		<< "\nmainThermostat > livingRoomHeater: " << (mainThermostat > livingRoomHeater) << '\n';
 	return 0;
 }
